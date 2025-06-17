@@ -1,104 +1,76 @@
-def make_html_from_pi(pi_text_path, output_html_path="pi.html"):
-    with open(pi_text_path, "r") as f:
-        lines = f.readlines()
+import os
 
-    html = """<!DOCTYPE html>
+# Read raw pi digits from file (assuming all on one line or many lines)
+with open("pi_output.txt", "r") as f:
+    digits = f.read().replace("\n", "").strip()
+
+# Sanitize: remove leading 3. if included, and preserve it separately
+if digits.startswith("3."):
+    digits = digits[2:]
+elif digits.startswith("3"):
+    digits = digits[1:]
+
+# Split into lines of 1000 characters
+lines = [digits[i:i+1000] for i in range(0, len(digits), 1000)]
+
+# Build HTML content
+html = """<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi Digits Viewer</title>
-    <style>
-        body {
-            background: #0d0d0d;
-            color: #00ff88;
-            font-family: monospace;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #00ffaa;
-        }
-        #viewer {
-            max-height: 600px;
-            overflow-y: auto;
-            border: 1px solid #00ffaa;
-            padding: 10px;
-            background: #111;
-            margin-top: 10px;
-        }
-        .line {
-            display: flex;
-        }
-        .linenum {
-            width: 80px;
-            color: #888;
-        }
-        .digits {
-            white-space: pre-wrap;
-            word-break: break-word;
-            flex: 1;
-        }
-        #search {
-            margin-bottom: 10px;
-            padding: 5px;
-            width: 300px;
-            font-family: monospace;
-            background: #1a1a1a;
-            color: #00ff88;
-            border: 1px solid #00ffaa;
-        }
-        mark {
-            background: #ff0;
-            color: black;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Pi Digits Viewer</title>
+  <style>
+    body {{ font-family: monospace; background: #fdfdfd; color: #222; margin: 2em; }}
+    #searchBox {{ padding: 0.5em; font-size: 1em; width: 50%; margin-bottom: 1em; }}
+    #digits {{ overflow-y: scroll; max-height: 70vh; white-space: pre; border: 1px solid #ccc; padding: 1em; background: #fff; }}
+    .line {{ line-height: 1.6; }}
+    .line-number {{ color: #999; display: inline-block; width: 5em; }}
+    h1 {{ margin-bottom: 0.2em; }}
+  </style>
 </head>
 <body>
-    <h1>Digits of π</h1>
-    <input type="text" id="search" placeholder="Search digits (e.g. 14159)">
-    <div id="trivia">
-        <h2>π Trivia</h2>
-        <ul>
-            <li>π is an irrational number: it never ends and never repeats.</li>
-            <li>The world record for digits memorized is over 70,000.</li>
-            <li>π appears in circles, waves, quantum physics, statistics, and probability.</li>
-            <li>π has been calculated to over 100 trillion digits with modern supercomputers.</li>
-        </ul>
-    </div>
-    <div id="viewer">
+  <h1>π Viewer</h1>
+  <p>First {} digits of Pi (excluding the '3.').</p>
+  <p><b>3.</b> is shown before the digits below.</p>
+
+  <input type="text" id="searchBox" placeholder="Search digits..." oninput="searchDigits()">
+  <div id="digits">
+    <div><b>3.</b></div>
+""".format(len(digits))
+
+# Append digits line by line
+for idx, line in enumerate(lines, start=1):
+    html += f'    <div class="line"><span class="line-number">{idx:5}</span> {line}</div>\n'
+
+# Pi trivia and JS
+html += """
+  </div>
+  <h2>π Trivia</h2>
+  <ul>
+    <li>π is irrational: its digits never end or repeat.</li>
+    <li>The first 10 digits of π are 3.141592653.</li>
+    <li>In 2025, π was calculated to over 300 trillion digits by Linus Media Group.</li>
+  </ul>
+
+  <script>
+    function searchDigits() {
+      const term = document.getElementById("searchBox").value;
+      const lines = document.querySelectorAll(".line");
+      lines.forEach(line => {
+        if (term === "" || line.textContent.includes(term)) {
+          line.style.display = "block";
+        } else {
+          line.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
 """
 
-    for i, line in enumerate(lines):
-        linenum = i * 1000 + 1
-        html += f'        <div class="line"><div class="linenum">{linenum:,}</div><div class="digits">{line.strip()}</div></div>\n'
+# Save HTML
+with open("pi.html", "w", encoding="utf-8") as f:
+    f.write(html)
 
-    html += """    </div>
-
-    <script>
-        const searchBox = document.getElementById('search');
-        searchBox.addEventListener('input', () => {
-            const term = searchBox.value;
-            const digits = document.querySelectorAll('.digits');
-            digits.forEach(el => {
-                const raw = el.textContent;
-                if (!term) {
-                    el.innerHTML = raw;
-                } else {
-                    const regex = new RegExp(term, 'gi');
-                    el.innerHTML = raw.replace(regex, match => `<mark>${match}</mark>`);
-                }
-            });
-        });
-    </script>
-</body>
-</html>"""
-
-    with open(output_html_path, "w", encoding="utf-8") as f:
-        f.write(html)
-
-    print(f"✅ pi.html generated with {len(lines)} lines and search-enabled display.")
-
-
-# Run this function directly if script is executed
-if __name__ == "__main__":
-    make_html_from_pi("pi_output.txt", "pi.html")
+print("✅ pi.html generated successfully.")
