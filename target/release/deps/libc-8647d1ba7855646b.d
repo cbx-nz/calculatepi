@@ -1,0 +1,11 @@
+C:\Users\CtvGa\Desktop\cbx\calculatepi\target\release\deps\liblibc-8647d1ba7855646b.rmeta: C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\lib.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\macros.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\primitives.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\windows\mod.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\windows\msvc\mod.rs
+
+C:\Users\CtvGa\Desktop\cbx\calculatepi\target\release\deps\liblibc-8647d1ba7855646b.rlib: C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\lib.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\macros.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\primitives.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\windows\mod.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\windows\msvc\mod.rs
+
+C:\Users\CtvGa\Desktop\cbx\calculatepi\target\release\deps\libc-8647d1ba7855646b.d: C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\lib.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\macros.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\primitives.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\windows\mod.rs C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\windows\msvc\mod.rs
+
+C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\lib.rs:
+C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\macros.rs:
+C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\primitives.rs:
+C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\windows\mod.rs:
+C:\Users\CtvGa\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libc-0.2.173\src\windows\msvc\mod.rs:

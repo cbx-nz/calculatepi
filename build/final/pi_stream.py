@@ -3,7 +3,7 @@ import json
 from decimal import Decimal, getcontext
 
 # === Settings ===
-DIGITS_PER_RUN = 50000         # Digits to calculate this run
+DIGITS_PER_RUN = 5000         # Digits to calculate this run
 LINE_LENGTH = 1000            # Digits per line in output file
 STATE_FILE = "pi_state.json"
 LEFTOVER_FILE = "pi_leftover.json"
